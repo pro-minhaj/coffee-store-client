@@ -29,7 +29,7 @@ const Update_Coffee = () => {
 
         const updateCoffee = {name, price, chef, supplier, taste, category, details, photo };
 
-        fetch(`http://localhost:5000/update/${_id}`, {
+        fetch(`https://coffee-store-server-seven-theta.vercel.app/update/${_id}`, {
             method: "PUT",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updateCoffee)

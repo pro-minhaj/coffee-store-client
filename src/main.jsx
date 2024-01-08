@@ -30,12 +30,12 @@ const router = createBrowserRouter([
       {
         path: 'coffee/:id',
         element: <Coffee_Details></Coffee_Details>,
-        loader: ({params}) => fetch(`http://localhost:5000/coffee/${params.id}`)
+        loader: ({params}) => fetch(`https://coffee-store-server-seven-theta.vercel.app/coffee/${params.id}`)
       },
       {
         path: 'update/:id',
         element: <Update_Coffee></Update_Coffee>,
-        loader: ({params}) => fetch(`http://localhost:5000/coffee/${params.id}`)
+        loader: ({params}) => fetch(`https://coffee-store-server-seven-theta.vercel.app/coffee/${params.id}`)
       },
       {
         path: 'blog',

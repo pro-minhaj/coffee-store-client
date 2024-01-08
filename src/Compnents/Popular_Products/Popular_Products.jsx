@@ -7,7 +7,7 @@ const Popular_Products = () => {
     const [cardData, setCardData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/coffee')
+        fetch('https://coffee-store-server-seven-theta.vercel.app/coffee')
         .then(res => res.json())
         .then(data => setCardData(data))
     }, [])
