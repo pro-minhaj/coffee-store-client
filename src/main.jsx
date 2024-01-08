@@ -14,6 +14,8 @@ import Error from './Compnents/Error/Error.jsx';
 import Blog from './Compnents/Blog/Blog.jsx';
 import Login from './Compnents/Login/Login.jsx';
 import Register from './Compnents/Register/Register.jsx';
+import Auth_Context from './Context/Auth_Context.jsx';
+import Private_Route from './Private_Route/Private_Route.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,21 +24,21 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <App></App>
+        element: <Private_Route><App></App></Private_Route>
       },
       {
         path: 'coffee',
-        element: <Add_Coffee></Add_Coffee>
+        element: <Private_Route><Add_Coffee></Add_Coffee></Private_Route>
       },
       {
         path: 'coffee/:id',
-        element: <Coffee_Details></Coffee_Details>,
-        loader: ({params}) => fetch(`https://coffee-store-server-seven-theta.vercel.app/coffee/${params.id}`)
+        element: <Private_Route><Coffee_Details></Coffee_Details></Private_Route>,
+        loader: ({ params }) => fetch(`https://coffee-store-server-seven-theta.vercel.app/coffee/${params.id}`)
       },
       {
         path: 'update/:id',
-        element: <Update_Coffee></Update_Coffee>,
-        loader: ({params}) => fetch(`https://coffee-store-server-seven-theta.vercel.app/coffee/${params.id}`)
+        element: <Private_Route><Update_Coffee></Update_Coffee></Private_Route>,
+        loader: ({ params }) => fetch(`https://coffee-store-server-seven-theta.vercel.app/coffee/${params.id}`)
       },
       {
         path: 'blog',
@@ -60,6 +62,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Auth_Context>
+      <RouterProvider router={router} />
+    </Auth_Context>
   </React.StrictMode>,
 )

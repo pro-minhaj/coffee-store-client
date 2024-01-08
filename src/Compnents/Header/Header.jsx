@@ -1,16 +1,39 @@
-import { Dialog} from '@headlessui/react'
-import React from 'react';
+import { Dialog } from '@headlessui/react'
+import React, { useContext } from 'react';
 import {
     Bars3Icon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { useState} from 'react';
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../assets/Logo/logo1 1.png';
+import { userContext } from '../../Context/Auth_Context';
+import toast from 'react-hot-toast';
 
 const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { user, logOut } = useContext(userContext);
 
+    // Toast 
+    const success = success => toast.success(success);
+    const error = error => toast.error(error);
+
+    const handleLogout = () => {
+        const loading = toast.loading('loading...');
+        () => loading;
+
+        // Log Out
+        logOut()
+        .then(() => {
+            toast.dismiss(loading);
+            success('Log Out SuccessFul!')
+        })
+        .catch(e => {
+            toast.dismiss(loading)
+            error(e.message.substr(10))
+        })
+
+    }
     return (
         <div className='sticky top-0'>
             <header className="bg-slate-50">
@@ -59,14 +82,16 @@ const Header = () => {
 
                     </div>
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <NavLink
-                            to="/login"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "padding" : isActive ? "btn btn-neutral" : "btn btn-outline"
-                            }
-                        >
-                            Login
-                        </NavLink>
+                        {
+                            user ? <button onClick={handleLogout} className='btn btn-outline text-red-600'>Logout</button> : <NavLink
+                                to="/login"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "padding" : isActive ? "btn btn-neutral" : "btn btn-outline"
+                                }
+                            >
+                                Login
+                            </NavLink>
+                        }
                     </div>
                 </nav>
 

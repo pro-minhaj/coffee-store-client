@@ -42,8 +42,8 @@ const Footer = () => {
                 <div className='w-full'>
                     <h2 className="text-stone-800 text-[45px] font-normal font-['Rancho']">Connect with Us</h2>
                     <form className='flex flex-col pt-8 gap-5 w-full'>
-                        <input className='bg-white rounded-[5px] outline-none py-2 px-3 text-black text-lg' type="text" name="name" id="" placeholder='Name' />
-                        <input className='bg-white rounded-[5px] outline-none py-2 px-3 text-black text-lg' type="email" name="email" id="" placeholder='Email' />
+                        <input className='bg-white rounded-[5px] outline-none py-2 px-3 text-black text-lg' type="text" name="name" placeholder='Name' />
+                        <input className='bg-white rounded-[5px] outline-none py-2 px-3 text-black text-lg' type="email" name="email" placeholder='Email' />
                         <textarea className='bg-white rounded-[5px] outline-none py-2 px-3 text-black text-lg' name="message" placeholder='Message' rows={5}></textarea>
                         <div>
                             <button type='submit' className="btn btn-outline">Send Message</button>
