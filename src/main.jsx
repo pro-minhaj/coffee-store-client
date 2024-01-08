@@ -13,6 +13,7 @@ import Update_Coffee from './Compnents/Update_Coffe/Update_Coffee.jsx';
 import Error from './Compnents/Error/Error.jsx';
 import Blog from './Compnents/Blog/Blog.jsx';
 import Login from './Compnents/Login/Login.jsx';
+import Register from './Compnents/Register/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login></Login>
+      },
+      {
+        path: 'register',
+        element: <Register></Register>
       },
       {
         path: "/*",
