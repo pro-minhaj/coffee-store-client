@@ -4,9 +4,40 @@ import { GrView } from "react-icons/gr";
 import { FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const Card = ({ card }) => {
+const Card = ({ card, setCardData, cardData }) => {
     const { _id, name, photo, price, chef } = card;
+
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/coffee/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            const deleteCoffee = cardData.filter(cardId => cardId._id !== id);
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Coffee has been deleted.",
+                                icon: "success"
+                            });
+                            setCardData(deleteCoffee);
+                        }
+                    })
+            }
+        });
+    }
 
     return (
         <div className="bg-stone-100 rounded-[10px] grid grid-cols-1 md:grid-cols-6 items-center justify-between gap-5 py-[30px] px-[40px] md:space-x-10">
@@ -23,7 +54,9 @@ const Card = ({ card }) => {
                 <Link to={`/update/${_id}`}>
                     <FaPen className='text-white bg-[#3C393B] rounded-[5px] !w-10 !h-10 p-2' />
                 </Link>
-                <MdDelete className='text-white bg-[#EA4744] rounded-[5px] !w-10 !h-10 p-2' />
+                <button onClick={() => handleDelete(_id)}>
+                    <MdDelete className='text-white bg-[#EA4744] rounded-[5px] !w-10 !h-10 p-2' />
+                </button>
             </div>
         </div>
     );

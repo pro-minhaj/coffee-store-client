@@ -11,7 +11,7 @@ const Popular_Products = () => {
         .then(res => res.json())
         .then(data => setCardData(data))
     }, [])
-    
+
     return (
         <div className='container mx-auto py-20'>
             <div className="text-center pb-10">
@@ -21,7 +21,7 @@ const Popular_Products = () => {
             </div>
             <div className="grid lg:grid-cols-2 gap-6">
                 {
-                    cardData.map(data => <Card key={data._id} card={data}></Card>)
+                    cardData.map(data => <Card key={data._id} card={data} setCardData={setCardData} cardData={cardData}></Card>)
                 }
             </div>
         </div>
