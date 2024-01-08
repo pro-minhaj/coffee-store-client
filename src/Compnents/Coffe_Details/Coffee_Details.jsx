@@ -20,7 +20,7 @@ const Coffee_Details = () => {
                         <h4 className="text-stone-900 text-xl font-semibold font-['Raleway']">Chef: <span className="text-zinc-600 text-xl font-normal font-['Raleway']">{chef}</span></h4>
                         <h4 className="text-stone-900 text-xl font-semibold font-['Raleway']">Supplier: <span className="text-zinc-600 text-xl font-normal font-['Raleway']">{supplier} Taka</span></h4>
                         <h4 className="text-stone-900 text-xl font-semibold font-['Raleway']">Supplier: <span className="text-zinc-600 text-xl font-normal font-['Raleway']">{supplier} Taka</span></h4>
-                        <h4 className="text-stone-900 text-xl font-semibold font-['Raleway']">Taste: <span className="text-zinc-600 text-xl font-normal font-['Raleway']">{taste} Taka</span></h4>
+                        <h4 className="text-stone-900 text-xl font-semibold font-['Raleway']">Taste: <span className="text-zinc-600 text-xl font-normal font-['Raleway']">{taste}</span></h4>
                         <h4 className="text-stone-900 text-xl font-semibold font-['Raleway']">Category: <span className="text-zinc-600 text-xl font-normal font-['Raleway']">{category} Taka</span></h4>
                         <h4 className="text-stone-900 text-xl font-semibold font-['Raleway']">Price: <span className="text-zinc-600 text-xl font-normal font-['Raleway']">{price} Taka</span></h4>
                         <h4 className="text-stone-900 text-xl font-semibold font-['Raleway']">Details: <span className="text-zinc-600 text-xl font-normal font-['Raleway']">{details} Taka</span></h4>
