@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 const Card = ({card}) => {
     const {_id, name, photo, price, chef} = card;
 
-    console.log(card);
     return (
         <div className="bg-stone-100 rounded-[10px] grid grid-cols-1 md:grid-cols-6 items-center justify-between gap-5 py-[30px] px-[40px] md:space-x-10">
             <div className='md:col-span-2'>
@@ -20,7 +19,7 @@ const Card = ({card}) => {
                 <h4 className="text-stone-900 text-xl font-semibold font-['Raleway']">Price: <span className="text-zinc-600 text-xl font-normal font-['Raleway']">{price} Taka</span></h4>
             </div>
             <div className='flex justify-center md:flex-col md:items-end gap-3 md:col-span-1'>
-                <Link ><GrView className='text-white bg-[#D2B48C] rounded-[5px] !w-10 !h-10 p-2' /></Link>
+                <Link to={`/coffee/${_id}`}><GrView className='text-white bg-[#D2B48C] rounded-[5px] w-10 h-10 p-2' /></Link>
                 <FaPen className='text-white bg-[#3C393B] rounded-[5px] !w-10 !h-10 p-2' />
                 <MdDelete className='text-white bg-[#EA4744] rounded-[5px] !w-10 !h-10 p-2' />
             </div>
